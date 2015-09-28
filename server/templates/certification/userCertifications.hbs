@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th>ID</th>
-      <th>{{t 'title'}}</th>
+      <th>{{t 'name'}}</th>
       <th>{{t 'actions'}}</th>
     </tr>
   </thead>
@@ -10,9 +10,11 @@
     {{#each record}}
       <tr>
         <td>{{id}}</td>
-        <td>{{title}}</td>
+        <td>{{name}}</td>
         <td>
-
+        {{#link-to 'certification.downloadAsPDF' userId id class="btn btn-default"}}
+          {{t 'download.as.pdf'}}
+        {{/link-to}}
         </td>
       </tr>
     {{else}}

@@ -12,6 +12,13 @@ module.exports = function loadPlugin(projectPath, Plugin) {
         'title': 'View user certifications',
         'description': 'View and download user certifications'
       }
+    },
+    certification: {
+     textPositions: {
+       middle: { l: 30, t: 350 },
+       left: { l: 30, t: 150 },
+       right: { l: 400, t: 150 }
+     }
     }
   });
   // ser plugin routes
@@ -22,6 +29,12 @@ module.exports = function loadPlugin(projectPath, Plugin) {
       model         : 'certification',
       permission    : 'user_certification',
       template      : 'certification/userCertifications'
+    },
+    'get /user/:userId([0-9]+)/certification/:certificationId([0-9]+)/download.pdf': {
+      controller    : 'certification',
+      action        : 'downloadAsPDF',
+      model         : 'certification',
+      permission    : 'user_certification'
     }
   });
   return plugin;

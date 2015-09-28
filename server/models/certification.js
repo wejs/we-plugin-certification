@@ -9,7 +9,6 @@ module.exports = function Model(we) {
   var model = {
     definition: {
       name: { type: we.db.Sequelize.STRING, allowNull: false },
-      text: { type: we.db.Sequelize.TEXT, allowNull: false },
       modelName: {
         type: we.db.Sequelize.STRING,
         allowNull: false

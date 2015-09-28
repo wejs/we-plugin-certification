@@ -16,6 +16,12 @@ module.exports = function Model(we) {
         type: we.db.Sequelize.TEXT,
         allowNull: false
       },
+      textPosition: {
+        type: we.db.Sequelize.STRING,
+        formfieldType: 'select',
+        fieldOptions: ['middle', 'left', 'right' ],
+        defaultValue: 'middle'
+      },
       modelName: {
         type: we.db.Sequelize.STRING,
         allowNull: false
