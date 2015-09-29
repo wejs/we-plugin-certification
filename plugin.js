@@ -24,6 +24,8 @@ module.exports = function loadPlugin(projectPath, Plugin) {
   // ser plugin routes
   plugin.setRoutes({
     'get /user/:userId([0-9]+)/certification': {
+      titleHandler  : 'i18n',
+      titleI18n     : 'certification.userCertifications',
       controller    : 'certification',
       action        : 'userCertifications',
       model         : 'certification',
