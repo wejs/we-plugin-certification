@@ -1,5 +1,6 @@
 {
   "certification.userCertifications": "User certifications",
   "certification.user.empty": "You dont have certifications in this system",
-  "download.as.pdf": "Download as PDF"
+  "download.as.pdf": "Download as PDF",
+  "certification.my": "My certifications"
 }

@@ -12,22 +12,17 @@ module.exports = function Model(we) {
         type: we.db.Sequelize.STRING,
         allowNull: false
       },
-      text: {
-        type: we.db.Sequelize.TEXT,
-        allowNull: false
-      },
+      // i18n text value
+      text: { type: we.db.Sequelize.TEXT, allowNull: false },
+
       textPosition: {
         type: we.db.Sequelize.STRING,
         formfieldType: 'select',
         fieldOptions: ['middle', 'left', 'right' ],
         defaultValue: 'middle'
       },
-      modelName: {
+      identifier: {
         type: we.db.Sequelize.STRING,
-        allowNull: false
-      },
-      modelId: {
-        type: we.db.Sequelize.BIGINT,
         allowNull: false
       }
     },

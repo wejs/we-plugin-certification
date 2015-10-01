@@ -9,11 +9,11 @@ module.exports = function Model(we) {
   var model = {
     definition: {
       name: { type: we.db.Sequelize.STRING, allowNull: false },
-      modelName: {
+      text: { type: we.db.Sequelize.TEXT, allowNull: false },
+      identifier: {
         type: we.db.Sequelize.STRING,
         allowNull: false
-      },
-      modelId: { type: we.db.Sequelize.BIGINT, allowNull: false }
+      }
     },
     associations: {
       user: { type: 'belongsTo',  model: 'user' },

@@ -21,12 +21,9 @@ module.exports = {
       if (!r) return res.notFound();
 
       req.we.db.models.certificationTemplate.findOne({
-        modelName: 'cfcertificationtype',
-        modelId: r.cfregistrationtypeId
+        where: { id: r.templateId },
       }).then(function (tpl) {
-        var textFN = req.we.hbs.compile(tpl.text, 'utf8');
-
-        // width 842 Pixels x height 595 Pixels
+         // width 842 Pixels x height 595 Pixels
         var doc = new PDFDocument({ size: [ 824, 595 ] });
         doc.pipe(res);
 
@@ -38,9 +35,7 @@ module.exports = {
         }
 
         doc.fontSize(24);
-        doc.text(textFN({
-          user: r.user
-        }), textCorsds.l, textCorsds.t);
+        doc.text(r.text, textCorsds.l, textCorsds.t);
 
         // finalize the PDF and end the stream
         doc.end();

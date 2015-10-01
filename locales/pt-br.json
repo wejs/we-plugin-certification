@@ -1,5 +1,6 @@
 {
   "certification.userCertifications": "Certificados do usuário",
   "certification.user.empty": "Você não tem certificados nesse sistema",
-  "download.as.pdf": "Baixar como PDF"
+  "download.as.pdf": "Baixar como PDF",
+  "certification.my": "Meus certificados"
 }

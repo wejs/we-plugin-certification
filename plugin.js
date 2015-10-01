@@ -14,11 +14,11 @@ module.exports = function loadPlugin(projectPath, Plugin) {
       }
     },
     certification: {
-     textPositions: {
-       middle: { l: 30, t: 350 },
-       left: { l: 30, t: 150 },
-       right: { l: 400, t: 150 }
-     }
+      textPositions: {
+        middle: { l: 30, t: 350 },
+        left: { l: 30, t: 150 },
+        right: { l: 400, t: 150 }
+      }
     }
   });
   // ser plugin routes
@@ -39,5 +39,28 @@ module.exports = function loadPlugin(projectPath, Plugin) {
       permission    : 'user_certification'
     }
   });
+
+
+  plugin.hooks.on('we:request:acl:after:load:context', function (data, done) {
+    var we = data.req.we;
+    if (!data.req.isAuthenticated()) return done();
+
+    // set certifications
+    data.res.locals.userMenu.addLink({
+      id: 'certification_userCertifications',
+      dividerAfter: true,
+      text: '<i class="glyphicon glyphicon-asterisk"></i> '+
+        data.req.__('certification.my'),
+      href: we.router.urlTo(
+        'certification.userCertifications', [data.req.user.id], we
+      ),
+      parent: 'user',
+      class: null,
+      weight: 7
+    });
+
+    done();
+  });
+
   return plugin;
 };
