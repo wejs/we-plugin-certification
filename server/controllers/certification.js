@@ -6,7 +6,7 @@ module.exports = {
     req.we.db.models.certification.findAll({
       where: { userId: req.params.userId }
     }).then(function (r){
-      res.locals.record = r;
+      res.locals.data = r;
       res.ok();
     }).catch(res.queryError);
   },
