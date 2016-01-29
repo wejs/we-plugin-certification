@@ -16,7 +16,7 @@ module.exports = {
           we.utils.async.series([
             function (done) {
               var sql = 'ALTER TABLE `certificationTemplates` ADD COLUMN `published` '+
-                'TINYINT(1) NOT NULL DEFAULT 0 `';
+                'TINYINT(1) NOT NULL DEFAULT 0 ';
               we.db.defaultConnection.query(sql)
               .then(function(){
                 done();
