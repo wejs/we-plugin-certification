@@ -1,5 +1,3 @@
-var PDFDocument = require('pdfkit');
-
 module.exports = {
   userCertifications: function userCertifications(req, res, next) {
     if (!req.params.userId) return next();
@@ -10,7 +8,7 @@ module.exports = {
       res.ok();
     }).catch(res.queryError);
   },
-  downloadAsPDF: function downloadAsPDF(req, res) {
+  downloadAsPDF: function downloadAsPDF(req, res, next) {
     req.we.db.models.certification.findOne({
       where: {
         userId: req.params.userId,
@@ -20,25 +18,15 @@ module.exports = {
     }).then(function (r) {
       if (!r) return res.notFound();
 
+      res.locals.data = r;
+
       req.we.db.models.certificationTemplate.findOne({
         where: { id: r.templateId },
       }).then(function (tpl) {
-         // width 842 Pixels x height 595 Pixels
-        var doc = new PDFDocument({ size: [ 824, 595 ] });
-        doc.pipe(res);
 
-        var textCorsds = req.we.config.certification.textPositions[tpl.textPosition];
-
-        if (tpl.image && tpl.image[0]) {
-          var imagePath = req.we.db.models.image.getImagePath(null, tpl.image[0].name);
-          doc.image(imagePath, 0, 0, { width: 824 });
-        }
-
-        doc.fontSize(24);
-        doc.text(r.text, textCorsds.l, textCorsds.t);
-
-        // finalize the PDF and end the stream
-        doc.end();
+        res.locals.pdfTemplate = tpl;
+        // render the template
+        req.we.ṕlugins['we-plugin-certification'].renderPDFtemplate(req, res, next);
       }).catch(res.queryError);
     }).catch(res.queryError);
   }

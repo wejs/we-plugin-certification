@@ -24,6 +24,11 @@ module.exports = function Model(we) {
       identifier: {
         type: we.db.Sequelize.STRING,
         allowNull: false
+      },
+      published: {
+        type: we.db.Sequelize.BOOLEAN,
+        formfieldType: 'boolean',
+        defaultValue: false
       }
     },
     associations: {

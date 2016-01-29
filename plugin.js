@@ -3,6 +3,7 @@
  *
  * see http://wejs.org/docs/we/extend.plugin
  */
+
 module.exports = function loadPlugin(projectPath, Plugin) {
   var plugin = new Plugin(__dirname);
   // set plugin configs
@@ -61,6 +62,12 @@ module.exports = function loadPlugin(projectPath, Plugin) {
 
     done();
   });
+
+  /**
+   * Render one pdf template
+   * @return {[type]} [description]
+   */
+  plugin.renderPDFtemplate = require('./lib/renderPDFtemplate.js');
 
   return plugin;
 };
