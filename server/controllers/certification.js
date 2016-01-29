@@ -26,7 +26,7 @@ module.exports = {
 
         res.locals.pdfTemplate = tpl;
         // render the template
-        req.we.ṕlugins['we-plugin-certification'].renderPDFtemplate(req, res, next);
+        req.we.plugins['we-plugin-certification'].renderPDFtemplate(req, res, next);
       }).catch(res.queryError);
     }).catch(res.queryError);
   }
