@@ -1,11 +1,11 @@
-# We.js user certificatins plugin
+# We.js user certification plugin
 
-> Add suport to generate user certifications in PDF, this plugin use the pdfkit module for render the certifications
+Add suport to generate user certifications in PDF, this plugin use the pdfkit module for render the certifications
 
 ## Installation
 
-```js
-npm install --save we-plugin-certification
+```sh
+we i we-plugin-certification
 ```
 
 ## Configuration
