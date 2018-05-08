@@ -1,7 +1,7 @@
 {
   "name": "we-plugin-certification",
   "description": "We.js user certification plugin",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "plugin.js",
   "scripts": {},
   "dependencies": {
