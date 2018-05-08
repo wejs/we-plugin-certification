@@ -32,7 +32,18 @@ module.exports = function Model(we) {
       }
     },
     associations: {
-      creator: { type: 'belongsTo', model: 'user' }
+      creator: {
+        type: 'belongsTo',
+        model: 'user',
+        foreignKey: 'creatorId',
+      },
+
+      certifications: {
+        type: 'hasMany',
+        model: 'certification',
+        inverse: 'template',
+        foreignKey: 'templateId'
+      }
     },
     options: {
       tableName: 'certificationTemplate',

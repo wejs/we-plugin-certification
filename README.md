@@ -37,6 +37,10 @@ Get user certifications:
 
 See plugin.js file
 
+### Certification generation process
+
+TODO!
+
 ## Links
 
 > * We.js site: http://wejs.org

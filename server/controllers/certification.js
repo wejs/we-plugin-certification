@@ -28,7 +28,7 @@ module.exports = {
 
       res.locals.data = r;
 
-      return req.we.db.models.certificationTemplate
+      return req.we.db.models['certification-template']
       .findOne({
         where: { id: r.templateId },
       })

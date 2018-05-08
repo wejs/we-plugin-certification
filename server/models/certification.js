@@ -17,7 +17,12 @@ module.exports = function Model(we) {
     },
     associations: {
       user: { type: 'belongsTo',  model: 'user' },
-      template: { type: 'belongsTo', model: 'certificationTemplate' }
+      template: {
+        type: 'belongsTo',
+        model: 'certification-template',
+        inverse: 'certifications',
+        foreignKey: 'templateId'
+      }
     },
     options: {
       tableName: 'certification',
