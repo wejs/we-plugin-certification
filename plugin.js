@@ -41,6 +41,9 @@ module.exports = function loadPlugin(projectPath, Plugin) {
     }
   });
 
+  plugin.setResource({ name: 'certification'});
+  plugin.setResource({ name: 'certification-template'});
+
   plugin.addCertificationsMenuLink = function (data, done) {
     const we = data.req.we;
     if (!data.req.isAuthenticated()) return done();
