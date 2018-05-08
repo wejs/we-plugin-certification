@@ -5,7 +5,7 @@
  */
 
 module.exports = function loadPlugin(projectPath, Plugin) {
-  var plugin = new Plugin(__dirname);
+  const plugin = new Plugin(__dirname);
   // set plugin configs
   plugin.setConfigs({
     permissions: {
@@ -22,7 +22,7 @@ module.exports = function loadPlugin(projectPath, Plugin) {
       }
     }
   });
-  // ser plugin routes
+
   plugin.setRoutes({
     'get /user/:userId([0-9]+)/certification': {
       titleHandler  : 'i18n',
@@ -41,9 +41,8 @@ module.exports = function loadPlugin(projectPath, Plugin) {
     }
   });
 
-
-  plugin.hooks.on('we:request:acl:after:load:context', function (data, done) {
-    var we = data.req.we;
+  plugin.addCertificationsMenuLink = function (data, done) {
+    const we = data.req.we;
     if (!data.req.isAuthenticated()) return done();
 
     // set certifications
@@ -61,7 +60,9 @@ module.exports = function loadPlugin(projectPath, Plugin) {
     });
 
     done();
-  });
+  }
+
+  plugin.hooks.on('we:request:acl:after:load:context', plugin.addCertificationsMenuLink);
 
   /**
    * Render one pdf template

@@ -6,7 +6,7 @@
  *
  */
 module.exports = function Model(we) {
-  var model = {
+  const model = {
     definition: {
       name: { type: we.db.Sequelize.STRING, allowNull: false },
       text: { type: we.db.Sequelize.TEXT, allowNull: false },
@@ -20,6 +20,9 @@ module.exports = function Model(we) {
       template: { type: 'belongsTo', model: 'certificationTemplate' }
     },
     options: {
+      tableName: 'certification',
+      enableAlias: false,
+
       classMethods: {},
       instanceMethods: {},
       hooks: {}

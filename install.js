@@ -5,24 +5,28 @@ module.exports = {
    * @param  {Object} we we.js object
    * @return {Array}    a list of update objects
    */
-  updates: function updates() {
+  updates() {
     return [
       {
         version: '0.3.3',
         /**
          * Add present column
          */
-        update: function update033(we, done) {
+        update(we, done) {
           we.utils.async.series([
             function (done) {
-              var sql = 'ALTER TABLE `certificationTemplates` ADD COLUMN `published` '+
+              let sql = 'ALTER TABLE `certificationTemplates` ADD COLUMN `published` '+
                 'TINYINT(1) NOT NULL DEFAULT 0 ';
+
               we.db.defaultConnection.query(sql)
-              .then(function(){
+              .then( ()=> {
                 done();
-              }).catch(function (err){
+                return null;
+              })
+              .catch( (err)=> {
                 we.log.error(err);
                 done(err);
+                return null;
               });
             }
           ], done);

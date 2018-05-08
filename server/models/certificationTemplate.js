@@ -6,7 +6,7 @@
  *
  */
 module.exports = function Model(we) {
-  var model = {
+  const model = {
     definition: {
       name: {
         type: we.db.Sequelize.STRING,
@@ -35,6 +35,9 @@ module.exports = function Model(we) {
       creator: { type: 'belongsTo', model: 'user' }
     },
     options: {
+      tableName: 'certificationTemplate',
+      enableAlias: false,
+
       imageFields: {
         image: { formFieldMultiple: false }
       },
