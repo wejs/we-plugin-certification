@@ -46,6 +46,7 @@ module.exports = function loadPlugin(projectPath, Plugin) {
 
   plugin.addCertificationsMenuLink = function (data, done) {
     const we = data.req.we;
+
     if (!data.req.isAuthenticated()) return done();
 
     // set certifications
@@ -65,7 +66,7 @@ module.exports = function loadPlugin(projectPath, Plugin) {
     done();
   }
 
-  plugin.hooks.on('we:request:acl:after:load:context', plugin.addCertificationsMenuLink);
+  plugin.hooks.on('we-plugin-menu:after:set:core:menus', plugin.addCertificationsMenuLink);
 
   /**
    * Render one pdf template
